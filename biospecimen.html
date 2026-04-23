@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biospecimen Management Platform — Sangeeta Parakala</title>
+  <meta name="description" content="Case study: Biospecimen Management Platform at Slope.IO — designing a compliance-ready platform for the full biospecimen lifecycle.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .cs-hero {
+      background: #F4F4F4;
+      padding: clamp(3rem, 8vh, 6rem) 0;
+    }
+
+    .cs-hero__label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+
+    .cs-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      color: var(--ink);
+      max-width: 20ch;
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-hero__quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.375rem);
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--ink-muted);
+      max-width: 62ch;
+      border-left: 3px solid var(--accent);
+      padding-left: var(--space-3);
+      margin: 0;
+    }
+
+    .cs-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (min-width: 720px) {
+      .cs-meta { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .cs-meta__label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--ink-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .cs-meta__value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .cs-section {
+      padding: var(--space-7) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cs-section:last-of-type { border-bottom: none; }
+
+    .cs-section__label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-section__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: var(--space-4);
+      max-width: 24ch;
+    }
+
+    .cs-body {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--ink-muted);
+      max-width: 64ch;
+    }
+
+    .cs-body p { margin-bottom: var(--space-3); }
+    .cs-body p:last-child { margin-bottom: 0; }
+
+    .cs-two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    @media (min-width: 860px) {
+      .cs-two-col { grid-template-columns: 1fr 1fr; }
+      .cs-two-col--wide { grid-template-columns: 3fr 2fr; }
+    }
+
+    .cs-image {
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-top: var(--space-5);
+    }
+
+    .cs-image img { width: 100%; height: auto; display: block; }
+    .cs-image--full { margin-top: var(--space-5); }
+
+    .cs-image__caption {
+      font-size: 0.8125rem;
+      color: var(--ink-muted);
+      margin-top: var(--space-2);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .cs-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    @media (min-width: 720px) {
+      .cs-photo-grid { grid-template-columns: repeat(3, 1fr); }
+      .cs-photo-grid--2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .cs-photo-grid__item { border-radius: var(--radius-md); overflow: hidden; }
+    .cs-photo-grid__item img { width: 100%; height: 220px; object-fit: cover; display: block; }
+
+    .cs-insights {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .cs-insight { display: flex; gap: var(--space-3); align-items: flex-start; }
+
+    .cs-insight__dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 0.5rem;
+    }
+
+    .cs-insight__text { font-size: 1rem; color: var(--ink-muted); line-height: 1.65; }
+
+    .cs-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      margin-bottom: var(--space-4);
+      transition: color 0.2s;
+    }
+
+    .cs-back:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="nav__brand">sangeeta parakala<span class="nav__brand-dot">.</span></a>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">☰</button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="work.html" class="is-active">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="container">
+        <a href="work.html" class="cs-back">← Back to work</a>
+        <div class="reveal">
+          <span class="cs-hero__label">Case Study · Slope.IO · 2024 — Present</span>
+          <h1 class="cs-hero__title">Biospecimen Management Platform</h1>
+          <p class="cs-hero__quote">Slope.IO's biospecimen management platform supports the full biospecimen lifecycle from lab kits and samples to associated metadata across pre-collection, collection, and post-collection phases. The platform is built to meet the demands of regulated environments, with a strong focus on compliance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meta -->
+    <section style="padding: 0; border-bottom: none;">
+      <div class="container">
+        <div class="cs-meta reveal">
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Role</div>
+            <div class="cs-meta__value">Sole Designer</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Company</div>
+            <div class="cs-meta__value">Slope.IO</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Platform</div>
+            <div class="cs-meta__value">Biospecimen 360</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Timeline</div>
+            <div class="cs-meta__value">2024 — Present</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Story -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="cs-two-col">
+          <div class="reveal">
+            <div class="cs-section__label">The Story</div>
+            <h2 class="cs-section__title">Joining to define a platform from the ground up.</h2>
+          </div>
+          <div class="cs-body reveal">
+            <p>I joined Slope at a pivotal moment, as the company began defining its next-generation biospecimen management platform, Biospecimen 360. As the sole designer on the initiative, I was responsible for leading user research, experience design, and validation efforts. The first priority was to establish clarity around the problem space. I led efforts to define the core challenges, identify key user archetypes, and align the team on who we were designing for and why. This foundational work set the direction for a more user-centered product strategy.</p>
+            <p><strong style="color: var(--ink);">Project Goal:</strong> Design and deliver an efficient, intuitive biospecimen management system that supports the full operational workflow, including:</p>
+            <div class="cs-insights" style="margin-top: var(--space-3);">
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Subject and visit management</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Sample collection and processing</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Storage and inventory tracking</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Shipment and logistics</div>
+              </div>
+            </div>
+            <p style="margin-top: var(--space-3);">The goal was to reduce complexity, improve usability, and ensure the system supports real-world clinical workflows.</p>
+            <p><strong style="color: var(--ink);">Limitations:</strong> Resource constraints led me to explore AI tools to increase efficiency and throughput. At the same time, engineering capacity and readiness were still maturing, which impacted overall delivery timelines.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Beginning -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="cs-two-col">
+          <div class="reveal">
+            <div class="cs-section__label">The Beginning</div>
+            <h2 class="cs-section__title">Understanding the problem space end-to-end.</h2>
+          </div>
+          <div class="cs-body reveal">
+            <p>I started with understanding the problem space end-to-end. I began by synthesizing product feedback and deeply analyzing existing workflows to identify structural gaps in the experience. It became clear that the product was not aligned with how clinical teams actually operated in their environments.</p>
+          </div>
+        </div>
+
+        <div class="cs-image cs-image--full reveal">
+          <img src="images/biospecimen/Group+1.png" alt="Existing Biospecimen 360 product screens" loading="lazy">
+          <p class="cs-image__caption">The existing product — analyzing current workflows to identify structural gaps in the experience.</p>
+        </div>
+
+        <div class="cs-two-col" style="margin-top: var(--space-6);">
+          <div class="cs-body reveal">
+            <p>To bridge this gap, I conducted user research including interviews and shadowing clinicians in their physical workspaces. This allowed me to observe firsthand how biospecimen workflows unfold in real-world settings. Through ethnographic research, I developed a nuanced understanding of the different roles involved — those directly interacting with the system and those who required visibility for oversight, compliance, and coordination.</p>
+            <p>These insights shaped a strategic shift from feature-based thinking to a systems-driven approach. I established a measurement framework to define success, grounded in usability, adoption, and compliance outcomes. From there, I defined core user archetypes, mapped end-to-end journeys, and outlined the critical workflows and reporting structures required to support regulated environments.</p>
+            <p>This work laid the foundation for a more intuitive, scalable, and compliance-ready platform — one that aligns with real-world clinical operations and supports both execution and oversight across the biospecimen lifecycle.</p>
+          </div>
+          <div class="reveal">
+            <div class="cs-insights">
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Interviewed and shadowed clinicians across multiple clinical sites</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Identified structural gaps between product and real-world workflows</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Defined core user archetypes and end-to-end journey maps</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Established measurement framework grounded in usability, adoption, and compliance</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Workshop -->
+    <section class="cs-section" style="background: #1C1C1C;">
+      <div class="container">
+        <div class="cs-two-col">
+          <div class="reveal">
+            <div class="cs-section__label" style="color: rgba(255,255,255,0.4);">Design Workshop</div>
+            <h2 class="cs-section__title" style="color: #fff;">Exploring the problem space with the full team.</h2>
+            <div class="cs-body" style="color: rgba(255,255,255,0.65); margin-top: var(--space-4);">
+              <p>We then conducted a design workshop where we explored the problem space deeply, and defined the problems we wanted to focus on.</p>
+              <p>We then broke the team into groups to brainstorm features within each of these problem spaces and possible solutions.</p>
+              <p>We had the engineering team help us understand technical limitations and sales help us understand all the compliance issues we will need to support.</p>
+            </div>
+          </div>
+          <div class="cs-photo-grid cs-photo-grid--2 reveal" style="margin-top: 0; align-self: center;">
+            <div class="cs-photo-grid__item">
+              <img src="images/biospecimen/IMG_9700+%281%29.jpg" alt="Workshop sketches" loading="lazy">
+            </div>
+            <div class="cs-photo-grid__item">
+              <img src="images/biospecimen/IMG_9701+%281%29.jpg" alt="Workshop sketches" loading="lazy">
+            </div>
+            <div class="cs-photo-grid__item">
+              <img src="images/biospecimen/IMG_9702+%282%29.jpg" alt="Workshop sketches" loading="lazy">
+            </div>
+            <div class="cs-photo-grid__item">
+              <img src="images/biospecimen/IMG_9704+%282%29.jpg" alt="Workshop sketches" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-6);">
+          <img src="images/biospecimen/IMG_9705+%282%29.jpg" alt="Versatile intuitive sample flows" loading="lazy" style="border-radius: var(--radius-md);">
+          <p class="cs-image__caption" style="color: rgba(255,255,255,0.45);">Exploring versatile, intuitive sample and subject interlaced timepoint flows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Invisible Work -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="cs-two-col">
+          <div class="reveal">
+            <div class="cs-section__label">The Invisible Work</div>
+            <h2 class="cs-section__title">Building alignment before building the product.</h2>
+          </div>
+          <div class="cs-body reveal">
+            <p>Equipped with research and clarity, I started with building a slope value model for the teams to align on. Once we were in alignment on the platform we were building and the archetypes we were building for, we cleaned up the personas.</p>
+          </div>
+        </div>
+
+        <div class="cs-image cs-image--full reveal">
+          <img src="images/biospecimen/Slide+16_9+-+1.jpg" alt="Platform model — inventory tracking, visit schedule, sample management" loading="lazy">
+          <p class="cs-image__caption">Platform model — mapping the full biospecimen lifecycle across inventory tracking, visit scheduling, sample management, shipping, and storage.</p>
+        </div>
+
+        <div class="cs-two-col" style="margin-top: var(--space-5);">
+          <div class="cs-image reveal" style="margin-top: 0;">
+            <img src="images/biospecimen/Slide+16_9+-+2.jpg" alt="Sponsor and CRO Coordinator archetypes" loading="lazy">
+            <p class="cs-image__caption">Sponsor and CRO Coordinator archetypes — defining oversight and operational roles.</p>
+          </div>
+          <div class="cs-image reveal" style="margin-top: 0;">
+            <img src="images/biospecimen/Slide+16_9+-+4.jpg" alt="Lab Tech archetype" loading="lazy">
+            <p class="cs-image__caption">Lab Technician archetype — grounding collection and processing workflows in real user needs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Designs -->
+    <section class="cs-section" style="background: #F4F4F4;">
+      <div class="container">
+        <div class="cs-two-col">
+          <div class="reveal">
+            <div class="cs-section__label">Final Designs</div>
+            <h2 class="cs-section__title">From archetypes to shipped product.</h2>
+          </div>
+          <div class="cs-body reveal">
+            <p>I established the product vision, which was translated into features, user stories, and sprint-level designs in partnership with product management. Biospecimen 360 has received positive validation in testing, and early indicators point to strong adoption. We onboarded our first study this month and have since secured contracts with several large pharmaceutical companies.</p>
+          </div>
+        </div>
+
+        <div class="cs-image cs-image--full reveal">
+          <img src="images/biospecimen/Group+2.jpg" alt="Final Biospecimen 360 designs" loading="lazy">
+          <p class="cs-image__caption">Biospecimen 360 — final designs covering Subject Management, Visit Scheduling, Sample Collection, Storage, and Shipment workflows.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>© <span id="year"></span> Sangeeta Parakala</div>
+        <div>Designed &amp; built with care in Cary, NC</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medication Management — Sangeeta Parakala</title>
+  <meta name="description" content="Case study: Medication Management at Omnicell — redesigning a cloud-based platform for autonomous pharmacy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Case study specific styles */
+    .cs-hero {
+      background: #F4F4F4;
+      padding: clamp(3rem, 8vh, 6rem) 0;
+    }
+
+    .cs-hero__label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+
+    .cs-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      color: var(--ink);
+      max-width: 18ch;
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-hero__quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.375rem);
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--ink-muted);
+      max-width: 58ch;
+      border-left: 3px solid var(--accent);
+      padding-left: var(--space-3);
+      margin: 0;
+    }
+
+    /* Meta grid */
+    .cs-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (min-width: 720px) {
+      .cs-meta {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    .cs-meta__item {}
+
+    .cs-meta__label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--ink-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .cs-meta__value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    /* Content sections */
+    .cs-section {
+      padding: var(--space-7) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cs-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .cs-section__label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-section__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: var(--space-4);
+      max-width: 22ch;
+    }
+
+    .cs-section__title--accent span {
+      color: var(--accent);
+    }
+
+    .cs-body {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--ink-muted);
+      max-width: 64ch;
+    }
+
+    .cs-body p {
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Two column layout */
+    .cs-two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    @media (min-width: 860px) {
+      .cs-two-col {
+        grid-template-columns: 1fr 1fr;
+      }
+      .cs-two-col--wide {
+        grid-template-columns: 3fr 2fr;
+      }
+    }
+
+    /* Highlight box */
+    .cs-highlight {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: var(--space-2) var(--space-3);
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .cs-highlight span {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+      margin-top: 0.35rem;
+      font-family: var(--font-body);
+    }
+
+
+    /* Feature cards */
+    .cs-features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    @media (min-width: 720px) {
+      .cs-features {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .cs-feature-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .cs-feature-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(217, 27, 130, 0.08);
+    }
+
+    .cs-feature-card__num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-feature-card__title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-feature-card__body {
+      font-size: 0.9375rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-feature-card__link {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .cs-feature-card__link:hover {
+      gap: 0.5rem;
+    }
+
+    /* Insight list */
+    .cs-insights {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .cs-insight {
+      display: flex;
+      gap: var(--space-3);
+      align-items: flex-start;
+    }
+
+    .cs-insight__dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 0.5rem;
+    }
+
+    .cs-insight__text {
+      font-size: 1rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+
+    /* Images */
+    .cs-image {
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-top: var(--space-5);
+    }
+
+    .cs-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cs-image--full {
+      margin-top: var(--space-5);
+    }
+
+    .cs-image__caption {
+      font-size: 0.8125rem;
+      color: var(--ink-soft);
+      margin-top: 0.75rem;
+      font-style: italic;
+    }
+
+    /* Back link */
+    .cs-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      margin-bottom: var(--space-4);
+      transition: color 0.2s;
+    }
+
+    .cs-back:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="nav__brand">sangeeta parakala<span class="nav__brand-dot">.</span></a>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">☰</button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="work.html" class="is-active">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="container">
+        <a href="work.html" class="cs-back reveal">← Back to work</a>
+        <div class="reveal">
+          <span class="cs-hero__label">Case Study · Omnicell · 2021–2023</span>
+          <h1 class="cs-hero__title">Medication Management</h1>
+          <blockquote class="cs-hero__quote">
+            "Medication management systems enable hospitals to precisely control their inventory, set rules for stocking and dispensing, and optimize stock levels effectively."
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meta -->
+    <section style="padding: 0; border-bottom: none;">
+      <div class="container">
+        <div class="cs-meta reveal">
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Role</div>
+            <div class="cs-meta__value">Sr. Designer &amp; Design Manager</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Team</div>
+            <div class="cs-meta__value">Built team of 5 from solo</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Scope</div>
+            <div class="cs-meta__value">22+ scrum teams</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Platform</div>
+            <div class="cs-meta__value">Cloud-based SaaS · $1.3B · 3,000+ hospital partners · 2M users</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Impact</div>
+            <div class="cs-meta__value">Saved 14+ mins per pharmacist per item added</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Story -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="cs-two-col">
+          <div class="reveal">
+            <div class="cs-section__label">The Story</div>
+            <h2 class="cs-section__title">Joining to lead a transition — not just a redesign.</h2>
+          </div>
+          <div class="cs-body reveal">
+            <p>I joined Omnicell as the sole designer on the cloud platform team, facing a steep learning curve in a highly regulated, clinically complex domain. The goal: transition medication management from a legacy on-premise product to a modern cloud platform, maintaining feature parity while meaningfully improving the experience.</p>
+            <p>I started by establishing a design system using Material components, patterns, and icons, then delivered wireframes to unblock immediate development needs. Alongside that I conducted user studies with existing customers, collaborated with the business intelligence team on feature prioritization, and worked to align design decisions with strategic business goals.</p>
+            <p>What worked: strong engineering, product, and UX partnership, and leadership that was genuinely receptive to data and research findings.</p>
+          </div>
+        </div>
+        <div class="cs-image cs-image--full reveal">
+          <img src="images/Frame+31.png" alt="Legacy medication management product" loading="lazy">
+          <p class="cs-image__caption">The legacy product before I joined. Engineering was waiting on a designer — so my first move was to reskin the existing journeys to unblock development, then layer in deeper efficiency improvements once we had a foundation to build on.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Challenge -->
+    <section class="cs-section" style="background: #F4F4F4;">
+      <div class="container">
+        <div class="reveal">
+          <div class="cs-section__label">The Challenge</div>
+          <h2 class="cs-section__title">147 attributes. One screen.</h2>
+        </div>
+        <div class="cs-two-col cs-two-col--wide" style="margin-top: var(--space-4);">
+          <div class="cs-body reveal">
+            <p>Medications and supplies were characterized by 147+ distinct attributes — each one dictating behavior and rules at specific locations across hospital systems. The challenge wasn't just visual: it was assessing necessity, collecting usage data, and organizing attributes in a way that was both clinically accurate and actually usable within a real delivery timeframe.</p>
+            <p>The solution: fixed page flows for readability, Material Design system for familiar component behavior, clear tabs and information hierarchy, and distinct view/edit modes. The result was measurably improved usability and findability — and crucially, it earned trust from both the engineering team and beta testers.</p>
+          </div>
+          <div class="reveal" style="display:flex; flex-direction:column; gap: var(--space-3);">
+            <div class="cs-highlight" style="max-width: 220px;">147<span>distinct item attributes per medication</span></div>
+            <div class="cs-highlight" style="max-width: 220px;">22+<span>scrum teams supported by the design system</span></div>
+          </div>
+        </div>
+        <div class="cs-image reveal" style="margin-top: var(--space-4); width: 55%; margin-left: auto;">
+          <img src="images/Frame+35.png" alt="Early wireframe sketches" loading="lazy">
+          <p class="cs-image__caption">Early wireframe sketches exploring layout and interaction patterns.</p>
+        </div>
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-4);">
+          <img src="images/mocks.png" alt="Platform mockups" loading="lazy">
+          <p class="cs-image__caption">High-fidelity mockups of the medication management platform.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Invisible Work -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="cs-two-col">
+          <div class="reveal">
+            <div class="cs-section__label">The Invisible Work</div>
+            <h2 class="cs-section__title">Building the case before building the product.</h2>
+            <div style="margin-top: var(--space-4); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.1); border: 1px solid var(--line);">
+              <img src="images/workshopiM.png" alt="Virtual workshop session" loading="lazy" style="width:100%; height:auto; display:block;">
+            </div>
+            <p class="cs-image__caption" style="margin-top: 0.5rem;">Virtual workshop with major health systems — building the prioritized feature roadmap.</p>
+          </div>
+          <div class="reveal">
+            <div class="cs-body">
+              <p>While building templates, I ran parallel problem space research — meeting with SMEs and stakeholders to understand what UX improvements were really worth, even in a free product offering. I mapped daily engineering touchpoints, identified user roles across 5 large hospital systems, and ran online workshops with product managers.</p>
+              <p>From this I built a value model that connected better experience to two outcomes that mattered to the business: reduced pharmacy staff time, and improved patient safety. That model secured the resources and team needed to pursue a full redesign roadmap — and validated design as a strategic investment, not a cost center.</p>
+            </div>
+            <div class="cs-insights" style="margin-top: var(--space-4);">
+              <div class="cs-insight reveal">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Identified user roles from 5 large hospital systems through primary research</div>
+              </div>
+              <div class="cs-insight reveal">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Built value model linking UX quality to pharmacy staff time reduction and patient safety</div>
+              </div>
+              <div class="cs-insight reveal">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Supported critical functions: diversion management and shortage tracking</div>
+              </div>
+              <div class="cs-insight reveal">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text">Created Confluence templates documenting research studies and outcomes for cross-functional teams</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Projects -->
+    <section class="cs-section" style="background: #F4F4F4;">
+      <div class="container">
+        <div class="reveal">
+          <div class="cs-section__label">Feature Projects</div>
+          <h2 class="cs-section__title">Where the work went deep.</h2>
+          <p class="cs-body" style="margin-top: var(--space-2);">Collaborated with product managers through virtual workshops with major health systems to understand critical fixes and build a prioritized feature roadmap.</p>
+        </div>
+        <div class="cs-features">
+
+          <article class="cs-feature-card reveal">
+            <div class="cs-feature-card__num">01</div>
+            <h3 class="cs-feature-card__title">Item Attribute Grouping</h3>
+            <p class="cs-feature-card__body">Every medication had 147 attributes defining item behavior at each location. We solved the findability problem by moving attributes based on usage data and grouping unused ones into contextual pharmacy tasks.</p>
+          </article>
+
+          <article class="cs-feature-card reveal">
+            <div class="cs-feature-card__num">02</div>
+            <h3 class="cs-feature-card__title">The Three List Problem</h3>
+            <p class="cs-feature-card__body">Health systems were navigating three separate lists to manage items due to location-based attribute variance. We identified the root cause and found a simple, elegant solution — integrating all three into one unified view.</p>
+          </article>
+
+          <article class="cs-feature-card reveal">
+            <div class="cs-feature-card__num">03</div>
+            <h3 class="cs-feature-card__title">Landscape Models &amp; Service Design</h3>
+            <p class="cs-feature-card__body">After a reorganization I inherited the analytics platform alongside the core product. The team needed alignment across features, products, and devices supporting 22+ scrum teams — requiring service design thinking at the platform level.</p>
+          </article>
+
+        </div>
+        <div class="cs-image reveal" style="margin-top: var(--space-5); width: 65%; margin-left: auto; margin-right: auto;">
+          <img src="images/Cloud+Landscape.jpg" alt="Cloud platform landscape and service design map" loading="lazy">
+          <p class="cs-image__caption">Cloud platform landscape model — aligning features, products, and devices across 22+ scrum teams.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep Dive: Item Attribute Grouping -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="reveal">
+          <div class="cs-section__label">Feature Deep Dive · 01</div>
+          <h2 class="cs-section__title">Item Attribute Consolidation — A Grouping Problem</h2>
+        </div>
+
+        <div class="cs-two-col" style="margin-top: var(--space-4);">
+          <div class="cs-body reveal">
+            <p>Every item — medication and supplies — within Omnicell's medication management system was characterized by a staggering 147 distinct attributes or more, affecting how items behaved at particular locations. These attributes were organized in non-intuitive categories, causing users to struggle with findability.</p>
+            <p>To understand the real problem, we conducted ethnographic research through pharmacy shadowing — observing the daily, weekly, and standard tasks performed by pharmacists, pharmacy staff, technicians, and nurses. This gave us the task model we needed to rethink the entire attribute architecture.</p>
+            <p>I spent several days working with SMEs, reviewing every item attribute and categorizing each one based on the tasks it related to. Unused attributes were removed. Related ones were combined. The result: a task-based grouping that matched how pharmacy staff actually worked.</p>
+          </div>
+
+          <div class="reveal">
+            <div class="cs-highlight" style="background: #fff; border: 1px solid var(--line);">147<span>attributes before consolidation</span></div>
+            <div class="cs-highlight" style="margin-top: var(--space-3); background: #fff; border: 1px solid var(--accent);">78<span>attributes after — task-based grouping</span></div>
+            <p style="margin-top: var(--space-3); font-size: 0.9375rem; color: var(--ink-muted); line-height: 1.65;">A 47% reduction in cognitive load — not by removing functionality, but by organizing it around how people actually work.</p>
+          </div>
+        </div>
+
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-5);">
+          <img src="images/ItemAttributes.jpg" alt="Original 147 item attributes" loading="lazy">
+          <p class="cs-image__caption">Before: 147 attributes organized in non-intuitive categories, creating severe findability problems for pharmacy staff.</p>
+        </div>
+
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-4);">
+          <img src="images/NewAttributes.jpg" alt="Redesigned attribute grouping" loading="lazy">
+          <p class="cs-image__caption">After: 78 attributes reorganized by task relationship — unused removed, related combined, grouped by how pharmacy staff actually work.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep Dive: The Three List Problem -->
+    <section class="cs-section" style="background: #F4F4F4;">
+      <div class="container">
+        <div class="reveal">
+          <div class="cs-section__label">Feature Deep Dive · 02</div>
+          <h2 class="cs-section__title">The Three List Problem</h2>
+        </div>
+
+        <div class="cs-two-col" style="margin-top: var(--space-4);">
+          <div class="cs-body reveal">
+            <p>Within the medication management legacy system, users navigated three separate lists for medications and supplies: an enterprise item list, a site item list, and cabinet item lists. Though seemingly hierarchical subsets, they functioned independently — because items possessed different attributes based on location.</p>
+            <p>Each item had a standard set of attributes giving it a unique Item ID, but additional attributes dictated its behavior in various circumstances and locations. The same item appeared multiple times across lists with varying properties. For example, an item might require witness verification at the enterprise level but not at a specific location like the Emergency Room — forcing users to manage duplicates across all three lists just to understand contextual behavior.</p>
+            <p>The solution was deceptively simple: a location selector within the item attributes view, allowing seamless navigation between attribute values based on where the item was located. One view. One list. All context.</p>
+            <p style="font-style: italic; color: var(--ink-muted);">"The most effective design solutions are imperceptible."</p>
+          </div>
+
+          <div class="reveal">
+            <div class="cs-insights">
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text"><strong style="color:var(--ink)">Enterprise item list</strong> — global attribute defaults</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text"><strong style="color:var(--ink)">Site item list</strong> — location-level overrides</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text"><strong style="color:var(--ink)">Cabinet item list</strong> — device-level behavior rules</div>
+              </div>
+              <div class="cs-insight" style="margin-top: var(--space-2); padding-top: var(--space-2); border-top: 1px solid var(--line);">
+                <div class="cs-insight__dot" style="background: var(--ink);"></div>
+                <div class="cs-insight__text"><strong style="color:var(--ink)">Solution:</strong> A location selector within the item attributes view — one unified list, contextual values on demand.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-5);">
+          <img src="images/IntegratedItem.jpg" alt="Integrated item list with location selector" loading="lazy">
+          <p class="cs-image__caption">The integrated item view with location selector — eliminating three separate lists with a single contextual control.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep Dive: Landscape Models & Service Design -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="reveal">
+          <div class="cs-section__label">Feature Deep Dive · 03</div>
+          <h2 class="cs-section__title">Landscape Models &amp; Service Design</h2>
+        </div>
+
+        <div class="cs-two-col" style="margin-top: var(--space-4);">
+          <div class="cs-body reveal">
+            <p>As scope expanded, I built and inherited a team of six supporting 22+ scrum teams — covering operations, analytics, and cabinet (robot) experiences. The challenge was no longer about individual features. It was about ensuring users perceived the entire system as a unified whole rather than a disjointed collection of parts.</p>
+            <p>We applied Gestalt principles for connection and continuity, invested in ethnographic research — shadowing pharmacy admins, pharmacists, and technicians — and collaborated with Product Leaders to build a cohesive product strategy grounded in customer vision and value statements.</p>
+          </div>
+          <div class="cs-body reveal">
+            <p>Key findings from shadowing shaped the roadmap: pharmacy technicians needed visual tools for medication stocking; the item edit flow involved 5–12 steps requiring simplification; inventory management needed dedicated space; and discrepancy management for controlled substances required entirely new stress-scenario workflows.</p>
+          </div>
+        </div>
+
+        <!-- Pharmacy shadowing images -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin-top: var(--space-5);">
+          <div class="cs-image reveal" style="margin-top: 0;">
+            <img src="images/pharmacy.jpg" alt="Pharmacy ethnographic research" loading="lazy">
+          </div>
+          <div class="cs-image reveal" style="margin-top: 0;">
+            <img src="images/pharmacy+3.jpg" alt="Pharmacy shadowing session" loading="lazy">
+          </div>
+          <div class="cs-image reveal" style="margin-top: 0;">
+            <img src="images/pharmacy4.jpg" alt="Pharmacy workflow observation" loading="lazy">
+          </div>
+          <div class="cs-image reveal" style="margin-top: 0;">
+            <img src="images/pharmacy+2.jpg" alt="Pharmacy technician observation" loading="lazy">
+          </div>
+        </div>
+        <p class="cs-image__caption reveal">Ethnographic research — shadowing pharmacy admins, pharmacists, and technicians in the field.</p>
+
+        <!-- UX Strategy pillars -->
+        <div style="margin-top: var(--space-6);">
+          <div class="reveal">
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: var(--space-4); color: var(--ink);">Three UX Strategy Pillars</h3>
+          </div>
+          <div class="cs-features" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="cs-feature-card reveal">
+              <div class="cs-feature-card__num">01</div>
+              <h3 class="cs-feature-card__title">Bridge the Gaps</h3>
+              <p class="cs-feature-card__body">"Connect the dots for our users. Do not make them think." Reduce friction between systems, roles, and workflows so the experience feels continuous.</p>
+            </div>
+            <div class="cs-feature-card reveal">
+              <div class="cs-feature-card__num">02</div>
+              <h3 class="cs-feature-card__title">Cohesive Experience</h3>
+              <p class="cs-feature-card__body">Consistent design across all devices — including micro-interactions, table hierarchy, and standard page templates — so every touchpoint feels like one product.</p>
+            </div>
+            <div class="cs-feature-card reveal">
+              <div class="cs-feature-card__num">03</div>
+              <h3 class="cs-feature-card__title">Value-Based Journeys</h3>
+              <p class="cs-feature-card__body">Focus on adding value at each process step rather than simply reducing clicks. Outcomes, not just efficiency.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Landscape & unified experience -->
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-5);">
+          <img src="images/Unified+Landscape.jpg" alt="Unified landscape model" loading="lazy">
+          <p class="cs-image__caption">System landscape map — item and medication journey across the full autonomous pharmacy space, used to align 22+ scrum teams on language, features, and multi-modal interactions.</p>
+        </div>
+
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-4);">
+          <img src="images/Unified+Experience.jpg" alt="Unified experience design" loading="lazy">
+          <p class="cs-image__caption">Unified experience model — standardized nomenclature, table hierarchy, and common components across all products and devices.</p>
+        </div>
+
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-4);">
+          <img src="images/Opportunity+Details+(Deadstock+90+days).png" alt="Analytics opportunity details" loading="lazy">
+          <p class="cs-image__caption">Analytics platform — inventory management with dedicated space and paid analytics features.</p>
+        </div>
+
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-4);">
+          <img src="images/Flash+Cabinet+E2E.jpg" alt="Cabinet end-to-end experience" loading="lazy">
+          <p class="cs-image__caption">Cabinet / robot feature model — end-to-end user engagement lifecycle showing dependencies, visualization views, and research needs across Omnicell's hardware ecosystem.</p>
+        </div>
+
+        <!-- Results callout -->
+        <div style="margin-top: var(--space-5); padding: var(--space-4); border-left: 3px solid var(--accent); background: #F4F4F4; border-radius: 0 var(--radius-md) var(--radius-md) 0;" class="reveal">
+          <p style="font-family: var(--font-display); font-size: clamp(1.1rem, 2vw, 1.375rem); font-weight: 500; letter-spacing: -0.02em; color: var(--ink); line-height: 1.5; margin: 0;">"The efforts to unify teams, align underlying services, and ensure consistent deliverables across all departments led to significant improvements in user experience and operational efficiency."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I Learned -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="cs-two-col">
+          <div class="reveal">
+            <div class="cs-section__label">Reflection</div>
+            <h2 class="cs-section__title">What made this work.</h2>
+          </div>
+          <div class="reveal">
+            <div class="cs-insights">
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text"><strong style="color:var(--ink)">Research as a business case.</strong> The invisible work — building the value model, mapping user roles, documenting outcomes — was what made the visible work possible.</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text"><strong style="color:var(--ink)">Constraints as design inputs.</strong> The inherited dark theme and Material system weren't blockers — they became a shared language that accelerated trust with engineering.</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text"><strong style="color:var(--ink)">Growing a team from zero.</strong> Starting solo and building to five required establishing process, standards, and culture simultaneously with shipping product.</div>
+              </div>
+              <div class="cs-insight">
+                <div class="cs-insight__dot"></div>
+                <div class="cs-insight__text"><strong style="color:var(--ink)">Partnership over authority.</strong> The strongest outcomes came from genuine cross-functional trust — not from design leading, but from design connecting.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next case study -->
+    <section style="padding: var(--space-6) 0; border-top: 1px solid var(--line);">
+      <div class="container reveal">
+        <a href="work.html" class="cs-back" style="font-size:1rem; font-weight:600; color: var(--ink);">← Back to all work</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>© <span id="year"></span> Sangeeta Parakala</div>
+        <div>Designed &amp; built with care in Cary, NC</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
