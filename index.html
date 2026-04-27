@@ -19,7 +19,7 @@
       <ul class="nav__links" id="navLinks">
         <li><a href="work.html">Work</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="resume.html">Resume</a></li>
       </ul>
     </nav>
   </header>
@@ -31,8 +31,8 @@
       <div class="container">
         <div class="reveal">
           <span class="eyebrow">Product Designer · Cary, NC</span>
-          <h1 class="h-display hero__title">I bring clarity to complex systems.</h1>
-          <p class="hero__sub">Designing end-to-end experiences that connect clinical complexity with human-centered outcomes.</p>
+          <h1 class="h-display hero__title">I design systems that bring clarity to complexity.</h1>
+          <p class="hero__sub">From AI-driven platforms to operational tools, I create end-to-end experiences that turn complex data and workflows into clear, actionable outcomes.</p>
         </div>
       </div>
     </section>
@@ -149,31 +149,49 @@
         <div class="reveal">
           <div class="section-label">Contact</div>
           <h2 class="h-lg contact-statement">Say hello.</h2>
-          <p class="contact-desc">If your team is navigating a complex system — healthcare, enterprise, AI — and wants a partner who'll bring clarity, I'd love to hear about it. Send a note with a bit of context and I'll follow up.</p>
-          <a href="mailto:sparakala@gmail.com?subject=Portfolio%20Inquiry" class="contact-cta">Send email</a>
+          <p class="contact-desc">Navigating complexity in healthcare, enterprise, or AI? I help teams bring clarity. Send a note with context and I would be glad to connect.</p>
+          <button class="contact-cta" id="openContactModal">Send email</button>
 
-          <div class="elsewhere">
-            <div class="elsewhere__label">Elsewhere</div>
-            <div class="elsewhere__links">
-              <a href="https://www.linkedin.com/in/sangeetaparakala">LinkedIn</a>
-              <a href="mailto:sparakala@gmail.com">Email</a>
-              <a href="tel:+19192790078">919.279.0078</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer class="site-footer">
+  <!-- Contact Modal -->
+  <div class="modal-backdrop" id="contactModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal__close" id="closeContactModal" aria-label="Close">✕</button>
+      <h2 class="modal__title" id="modalTitle">Say hello.</h2>
+      <p class="modal__desc">Drop me a note and I'll get back to you.</p>
+      <form class="modal__form" id="contactForm" novalidate>
+        <div class="modal__field">
+          <label for="contactName">Name</label>
+          <input type="text" id="contactName" name="name" placeholder="Your name" required>
+        </div>
+        <div class="modal__field">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <button type="submit" class="modal__submit" id="contactSubmit">Send message</button>
+        <p class="modal__status" id="contactStatus" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+    <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div>© <span id="year"></span> Sangeeta Parakala</div>
-        <div>Designed &amp; built with care in Cary, NC</div>
+        <div class="footer-copy">&copy; <span class="year"></span> Sangeeta Parakala</div>
+        <div class="footer-links">
+          <a href="mailto:sparakala.com">Email</a>
+          <a href="https://www.linkedin.com/in/sangeetaparakala" target="_blank">LinkedIn</a>
+          <a href="tel:+19192790078">919.279.0078</a>
+        </div>
       </div>
     </div>
   </footer>
+
 
   <script src="script.js"></script>
 </body>

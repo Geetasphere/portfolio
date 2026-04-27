@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume — Sangeeta Parakala</title>
+  <meta name="description" content="Resume of Sangeeta Parakala, Product Design Leader and Experience Strategist.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .resume-page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(2rem, 6vw, 4rem) var(--space-4) clamp(3rem, 8vw, 6rem);
+    }
+
+    /* Header */
+    .resume-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-4);
+      padding-bottom: var(--space-5);
+      border-bottom: 2px solid var(--ink);
+      flex-wrap: wrap;
+    }
+
+    .resume-header__name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .resume-header__title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .resume-header__tagline {
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+      font-style: italic;
+    }
+
+    .resume-header__contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .resume-header__contact a {
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+      transition: color 0.15s;
+    }
+
+    .resume-header__contact a:hover { color: var(--accent); }
+
+    /* Print button */
+    .resume-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      border: 1.5px solid var(--line);
+      border-radius: 999px;
+      padding: 0.4rem 1rem;
+      background: none;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+      margin-top: 0.5rem;
+    }
+
+    .resume-print:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* Layout */
+    .resume-body {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      margin-top: var(--space-6);
+    }
+
+    @media (min-width: 720px) {
+      .resume-body { grid-template-columns: 200px 1fr; gap: var(--space-5) var(--space-6); }
+    }
+
+    /* Section labels */
+    .resume-section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-muted);
+      padding-top: 0.15rem;
+    }
+
+    /* Summary */
+    .resume-summary {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--ink-muted);
+    }
+
+    /* Skills */
+    .resume-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .resume-skill {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      background: #F4F4F4;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 0.3rem 0.75rem;
+    }
+
+    .resume-skill-group {
+      margin-bottom: 0.75rem;
+    }
+
+    .resume-skill-group:last-child { margin-bottom: 0; }
+
+    .resume-skill-group__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    /* Experience */
+    .resume-jobs {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    .resume-job__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: 0.2rem;
+    }
+
+    .resume-job__company {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .resume-job__dates {
+      font-size: 0.8125rem;
+      color: var(--ink-muted);
+      white-space: nowrap;
+    }
+
+    .resume-job__title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: var(--space-2);
+    }
+
+    .resume-job__bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .resume-job__bullets li {
+      font-size: 0.9375rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .resume-job__bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--ink);
+      font-size: 1rem;
+      top: 0;
+    }
+
+    /* Education */
+    .resume-edu {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .resume-edu__degree {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.1rem;
+    }
+
+    .resume-edu__school {
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+    }
+
+    /* Divider row */
+    .resume-row {
+      display: contents;
+    }
+
+    .resume-row__divider {
+      grid-column: 1 / -1;
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 0;
+    }
+
+    @media print {
+      .site-header, .resume-print { display: none; }
+      .resume-page { padding-top: 1rem; }
+      body { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="nav__brand">sangeeta parakala<span class="nav__brand-dot">.</span></a>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">☰</button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="work.html">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html" class="is-active">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="resume-page">
+
+      <!-- Header -->
+      <div class="resume-header">
+        <div>
+          <div class="resume-header__name">Sangeeta Parakala</div>
+          <div class="resume-header__title">Product Design Leader | 0→1 Builder of AI &amp; Clinical Platforms</div>
+        </div>
+        <div class="resume-header__contact">
+          <a href="tel:+19192790078">919.279.0078</a>
+          <a href="mailto:sparakala@gmail.com">sparakala@gmail.com</a>
+          <a href="https://www.sparakala.com" target="_blank">sparakala.com</a>
+          <a href="https://www.linkedin.com/in/sangeetaparakala" target="_blank">LinkedIn</a>
+          <button class="resume-print" onclick="window.print()">⎙ Print / Save PDF</button>
+        </div>
+      </div>
+
+      <!-- Body grid -->
+      <div class="resume-body">
+
+        <!-- Summary -->
+        <div class="resume-section-label">Summary</div>
+        <p class="resume-summary">Product Design Leader with 10+ years building and scaling complex, data-rich platforms across healthcare and enterprise. Proven track record of leading 0→1 product design, establishing design systems, and driving clarity in ambiguous environments. Specialize in transforming clinical and operational workflows into intuitive, high-quality experiences across web, mobile, and internal tools balancing user needs, regulatory constraints, and business outcomes. Experienced in managing and mentoring design teams, partnering with product and engineering leadership, and raising the bar for design craft and execution. Expertise across product design, UX/UI, mobile and web applications, internal tools, and clinical systems in regulated environments.</p>
+
+        <hr class="resume-row__divider">
+
+        <!-- Skills -->
+        <div class="resume-section-label">Skills</div>
+        <div>
+          <div class="resume-skill-group">
+            <div class="resume-skill-group__label">Product Design &amp; Strategy</div>
+            <div class="resume-skills">
+              <span class="resume-skill">Product Design</span>
+              <span class="resume-skill">UX Design</span>
+              <span class="resume-skill">UI Design</span>
+              <span class="resume-skill">Design Systems</span>
+              <span class="resume-skill">0→1 Product Development</span>
+              <span class="resume-skill">Information Architecture</span>
+              <span class="resume-skill">Service Design</span>
+            </div>
+          </div>
+          <div class="resume-skill-group">
+            <div class="resume-skill-group__label">User Experience</div>
+            <div class="resume-skills">
+              <span class="resume-skill">UX Research</span>
+              <span class="resume-skill">Usability Testing</span>
+              <span class="resume-skill">Interaction Design</span>
+              <span class="resume-skill">Journey Mapping</span>
+              <span class="resume-skill">Dashboard Design</span>
+              <span class="resume-skill">Data Visualization</span>
+            </div>
+          </div>
+          <div class="resume-skill-group">
+            <div class="resume-skill-group__label">Platforms</div>
+            <div class="resume-skills">
+              <span class="resume-skill">Web Applications</span>
+              <span class="resume-skill">Mobile Applications</span>
+              <span class="resume-skill">Internal Tools</span>
+              <span class="resume-skill">Clinical &amp; Healthcare Systems</span>
+            </div>
+          </div>
+          <div class="resume-skill-group">
+            <div class="resume-skill-group__label">Tools</div>
+            <div class="resume-skills">
+              <span class="resume-skill">Figma</span>
+              <span class="resume-skill">Axure</span>
+              <span class="resume-skill">Sketch</span>
+              <span class="resume-skill">Miro</span>
+              <span class="resume-skill">Prototyping</span>
+              <span class="resume-skill">Wireframing</span>
+              <span class="resume-skill">HTML</span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="resume-row__divider">
+
+        <!-- Design Leadership -->
+        <div class="resume-section-label">Design Leadership</div>
+        <ul class="resume-job__bullets">
+          <li>Built and mentored design teams, scaling from solo to multi-designer orgs</li>
+          <li>Defined design standards and workflows across 20+ product teams</li>
+          <li>Operate as a player-coach, balancing hands-on design with strategic leadership</li>
+          <li>Partner closely with product and engineering to drive alignment in ambiguous environments</li>
+          <li>Known for bringing clarity to complex systems and raising design quality across teams</li>
+        </ul>
+
+        <hr class="resume-row__divider">
+
+        <!-- Education -->
+        <div class="resume-section-label">Education</div>
+        <div class="resume-edu">
+          <div>
+            <div class="resume-edu__degree">MFA, Graphic Design</div>
+            <div class="resume-edu__school">Savannah College of Art &amp; Design (SCAD), Savannah GA</div>
+          </div>
+          <div>
+            <div class="resume-edu__degree">UX Design Principles for AR/VR</div>
+            <div class="resume-edu__school">Tandon School of Engineering, NYU</div>
+          </div>
+        </div>
+
+        <hr class="resume-row__divider">
+
+        <!-- Experience -->
+        <div class="resume-section-label">Experience</div>
+        <div class="resume-jobs">
+
+          <div class="resume-job">
+            <div class="resume-job__header">
+              <span class="resume-job__company">Slope.IO</span>
+              <span class="resume-job__dates">Aug 2024 — Present</span>
+            </div>
+            <div class="resume-job__title">Lead &amp; Sole Designer</div>
+            <ul class="resume-job__bullets">
+              <li>Led 0→1 design of an AI-powered biospecimen management platform (Biospecimen 360), defining product vision, workflows, and system architecture</li>
+              <li>Drove adoption across 200+ sites, contributing to $10+M in enterprise contracts secured</li>
+              <li>Built and operationalized a cross-platform design system (web, mobile, AI interfaces), establishing consistency across product surfaces</li>
+              <li>Designed clinical and operational workflows for regulated environments, ensuring auditability and compliance at scale. Defined internal tools and clinical dashboards for biospecimen workflows</li>
+              <li>Partnered with product and engineering leadership to translate ambiguity into structured, shippable solutions</li>
+              <li>Established UX patterns for AI-assisted protocol management and prompt-based interactions</li>
+            </ul>
+          </div>
+
+          <div class="resume-job">
+            <div class="resume-job__header">
+              <span class="resume-job__company">The UX Consultant</span>
+              <span class="resume-job__dates">Dec 2023 — Aug 2024</span>
+            </div>
+            <div class="resume-job__title">Experience Strategist</div>
+            <ul class="resume-job__bullets">
+              <li>Led information architecture, design system alignment, and service design for Hexagon's global corporate platform</li>
+              <li>Conducted research and defined experience strategy for US Chess Federation, improving public and member-facing systems</li>
+            </ul>
+          </div>
+
+          <div class="resume-job">
+            <div class="resume-job__header">
+              <span class="resume-job__company">Omnicell</span>
+              <span class="resume-job__dates">July 2021 — Nov 2023</span>
+            </div>
+            <div class="resume-job__title">Sr. Designer &amp; Manager, Design Team</div>
+            <ul class="resume-job__bullets">
+              <li>Built and scaled a design team from 1→5, supporting 22+ cross-functional scrum teams</li>
+              <li>Led design strategy for a $1.3B cloud-based SaaS platform used by 3,000+ hospitals and 2M+ users</li>
+              <li>Transformed pharmacy workflows, reducing task time by 7+ minutes per pharmacist per item, improving operational efficiency at scale</li>
+              <li>Designed and optimized internal clinical dashboards and tools for high-pressure healthcare environments</li>
+              <li>Established cross-platform design systems and interaction standards across cloud applications and physical cabinet interfaces</li>
+              <li>Partnered with product, engineering, and clinical stakeholders to align design with regulatory and operational constraints</li>
+            </ul>
+          </div>
+
+          <div class="resume-job">
+            <div class="resume-job__header">
+              <span class="resume-job__company">UnitedHealth Group (Optum)</span>
+              <span class="resume-job__dates">Aug 2016 — July 2021</span>
+            </div>
+            <div class="resume-job__title">Lead Product Designer</div>
+            <ul class="resume-job__bullets">
+              <li>Defined design strategy for enterprise clinical services platforms, including decision-at-point-of-care and payment systems</li>
+              <li>Designed patient-facing applications and internal clinical systems</li>
+              <li>Built frameworks for AI-driven clinical decision support systems</li>
+              <li>Designed web and mobile patient experiences, including eVisit and international healthcare platforms</li>
+              <li>Created conversational UX and prompt-based journeys for enterprise chatbot systems</li>
+              <li>Led user research and synthesis, influencing product direction and improving user outcomes</li>
+            </ul>
+          </div>
+
+          <div class="resume-job">
+            <div class="resume-job__header">
+              <span class="resume-job__company">Lenovo</span>
+              <span class="resume-job__dates">Oct 2014 — Aug 2016</span>
+            </div>
+            <div class="resume-job__title">CX Analyst / UE Engineer</div>
+            <ul class="resume-job__bullets">
+              <li>Led UX for Out-of-Box Experience (OOBE) across ThinkSystem products</li>
+              <li>Partnered with Google to define UX standards for Chrome systems</li>
+              <li>Conducted usability research and translated insights into product improvements</li>
+              <li>Analyzed consumer behavior, market trends, and user demographics to build an efficient initial onboarding process, taking into account social, cultural and cognitive human factors impacting the experience for a global audience</li>
+            </ul>
+          </div>
+
+          <div class="resume-job">
+            <div class="resume-job__header">
+              <span class="resume-job__company">IBM</span>
+              <span class="resume-job__dates">May 2009 — May 2014</span>
+            </div>
+            <div class="resume-job__title">Solution Designer / Usability Analyst</div>
+            <ul class="resume-job__bullets">
+              <li>Designed B2B enterprise tools, automating workflows and improving operational efficiency</li>
+              <li>Defined ROI metrics and usability frameworks for enterprise systems</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+    <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-copy">&copy; <span class="year"></span> Sangeeta Parakala</div>
+        <div class="footer-links">
+          <a href="mailto:sparakala.com">Email</a>
+          <a href="https://www.linkedin.com/in/sangeetaparakala" target="_blank">LinkedIn</a>
+          <a href="tel:+19192790078">919.279.0078</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

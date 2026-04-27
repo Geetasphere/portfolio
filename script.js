@@ -6,8 +6,8 @@
   'use strict';
 
   // Set current year in footer
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  const yr = new Date().getFullYear();
+  document.querySelectorAll('#year, .year').forEach(el => el.textContent = yr);
 
   // Sticky header shadow on scroll
   const header = document.getElementById('siteHeader');
@@ -81,4 +81,81 @@
     );
     sections.forEach((s) => sectionObserver.observe(s));
   }
+  // Contact modal
+  const backdrop   = document.getElementById('contactModal');
+  const openBtn    = document.getElementById('openContactModal');
+  const closeBtn   = document.getElementById('closeContactModal');
+  const form       = document.getElementById('contactForm');
+  const submitBtn  = document.getElementById('contactSubmit');
+  const statusEl   = document.getElementById('contactStatus');
+
+  function openModal() {
+    backdrop.classList.add('is-open');
+    backdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => closeBtn.focus(), 50);
+  }
+
+  function closeModal() {
+    backdrop.classList.remove('is-open');
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    statusEl.textContent = '';
+    statusEl.className = 'modal__status';
+  }
+
+  if (openBtn)  openBtn.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  if (backdrop) {
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) closeModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop && backdrop.classList.contains('is-open')) closeModal();
+  });
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      statusEl.textContent = '';
+      statusEl.className = 'modal__status';
+
+      const data = Object.fromEntries(new FormData(form));
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: '5bd8be9f-93e8-4657-b124-20ae5101bae7',
+            subject: 'Portfolio Inquiry from ' + data.name,
+            name: data.name,
+            message: data.message,
+          }),
+        });
+
+        const json = await res.json();
+        if (json.success) {
+          statusEl.textContent = 'Sent! I\'ll be in touch soon.';
+          statusEl.classList.add('is-success');
+          form.reset();
+          setTimeout(closeModal, 2500);
+        } else {
+          throw new Error('failed');
+        }
+      } catch {
+        statusEl.textContent = 'Something went wrong — try emailing sparakala@gmail.com directly.';
+        statusEl.classList.add('is-error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send message';
+      }
+    });
+  }
+
 })();

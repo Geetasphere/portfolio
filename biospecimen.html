@@ -57,7 +57,16 @@
     }
 
     @media (min-width: 720px) {
-      .cs-meta { grid-template-columns: repeat(4, 1fr); }
+      .cs-meta { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .cs-meta { grid-template-columns: repeat(6, 1fr); }
+    }
+
+    .cs-meta__value--stat {
+      font-size: 1.375rem;
+      color: var(--accent);
     }
 
     .cs-meta__label {
@@ -200,7 +209,7 @@
       <ul class="nav__links" id="navLinks">
         <li><a href="work.html" class="is-active">Work</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="resume.html">Resume</a></li>
       </ul>
     </nav>
   </header>
@@ -238,6 +247,14 @@
           <div class="cs-meta__item">
             <div class="cs-meta__label">Timeline</div>
             <div class="cs-meta__value">2024 — Present</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Sites Adoption</div>
+            <div class="cs-meta__value cs-meta__value--stat">200+</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Contracts Secured</div>
+            <div class="cs-meta__value cs-meta__value--stat">$10M+</div>
           </div>
         </div>
       </div>
@@ -295,6 +312,11 @@
         <div class="cs-image cs-image--full reveal">
           <img src="images/biospecimen/Group+1.png" alt="Existing Biospecimen 360 product screens" loading="lazy">
           <p class="cs-image__caption">The existing product — analyzing current workflows to identify structural gaps in the experience.</p>
+        </div>
+
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-5);">
+          <img src="images/biospecimen/image 64.png" alt="Ethnographic research — shadowing clinicians in their physical workspaces" loading="lazy">
+          <p class="cs-image__caption">Photos from my own site visits — shadowing clinicians and lab technicians to observe biospecimen workflows firsthand.</p>
         </div>
 
         <div class="cs-two-col" style="margin-top: var(--space-6);">
@@ -403,7 +425,7 @@
             <h2 class="cs-section__title">From archetypes to shipped product.</h2>
           </div>
           <div class="cs-body reveal">
-            <p>I established the product vision, which was translated into features, user stories, and sprint-level designs in partnership with product management. Biospecimen 360 has received positive validation in testing, and early indicators point to strong adoption. We onboarded our first study this month and have since secured contracts with several large pharmaceutical companies.</p>
+            <p>I established the product vision, which was translated into features, user stories, and sprint-level designs in partnership with product management. Biospecimen 360 has received positive validation in testing, with adoption across <strong style="color: var(--ink);">200+ clinical sites</strong> and <strong style="color: var(--ink);">$10M+ in contracts secured</strong> with large pharmaceutical companies.</p>
           </div>
         </div>
 
@@ -416,14 +438,19 @@
 
   </main>
 
-  <footer class="site-footer">
+    <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div>© <span id="year"></span> Sangeeta Parakala</div>
-        <div>Designed &amp; built with care in Cary, NC</div>
+        <div class="footer-copy">&copy; <span class="year"></span> Sangeeta Parakala</div>
+        <div class="footer-links">
+          <a href="mailto:sparakala.com">Email</a>
+          <a href="https://www.linkedin.com/in/sangeetaparakala" target="_blank">LinkedIn</a>
+          <a href="tel:+19192790078">919.279.0078</a>
+        </div>
       </div>
     </div>
   </footer>
+
 
   <script src="script.js"></script>
 </body>

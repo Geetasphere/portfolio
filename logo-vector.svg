@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <!-- Circle background with salmon border -->
+  <circle cx="250" cy="250" r="238" fill="#FFF0EE" stroke="#C97B72" stroke-width="8"/>
+
+  <g fill="none" stroke="#C97B72" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- HEAD -->
+    <path d="M 305 158 C 298 140, 312 120, 334 118
+             C 358 115, 384 135, 383 162
+             C 382 186, 364 206, 341 207
+             C 318 208, 300 193, 301 171
+             C 302 164, 304 161, 305 158"/>
+
+    <!-- Hair top -->
+    <path d="M 305 158 C 298 145, 307 128, 323 122"/>
+    <path d="M 323 122 C 337 116, 355 120, 365 128"/>
+    <path d="M 365 128 C 372 133, 376 138, 378 144"/>
+
+    <!-- Short hair tufts at back of head -->
+    <path d="M 340 205 C 332 212, 324 218, 318 226"/>
+    <path d="M 350 201 C 346 210, 343 218, 342 225"/>
+    <path d="M 356 195 C 355 204, 353 212, 354 220"/>
+
+    <!-- NECK -->
+    <path d="M 323 209 C 314 225, 303 244, 293 262"/>
+
+    <!-- TORSO — main body line down -->
+    <path d="M 293 262 C 283 284, 273 309, 267 334
+             C 261 356, 259 380, 262 400"/>
+
+    <!-- Shoulder line — diagonal arm going lower-right -->
+    <path d="M 293 262 C 315 276, 346 298, 370 325
+             C 392 348, 404 376, 399 404
+             C 396 420, 388 432, 380 442"/>
+
+    <!-- LEFT ARM — upper arm curving up and left from body -->
+    <path d="M 285 264 C 265 268, 243 275, 222 284
+             C 200 294, 182 308, 172 325"/>
+
+    <!-- Elbow to wrist -->
+    <path d="M 172 325 C 168 338, 166 353, 168 366"/>
+
+    <!-- Palm / wrist base -->
+    <path d="M 168 366 C 163 354, 160 342, 160 330"/>
+
+    <!-- FINGERS — five lines fanning upward from palm -->
+    <!-- Pinky (leftmost) -->
+    <path d="M 154 332 C 148 315, 145 298, 147 284"/>
+    <!-- Ring -->
+    <path d="M 161 326 C 155 308, 154 290, 156 276"/>
+    <!-- Middle (tallest) -->
+    <path d="M 168 321 C 164 302, 163 284, 165 270"/>
+    <!-- Index -->
+    <path d="M 175 320 C 174 302, 175 285, 179 271"/>
+    <!-- Thumb (rightmost, shorter) -->
+    <path d="M 183 323 C 185 309, 190 296, 198 284"/>
+
+  </g>
+</svg>
