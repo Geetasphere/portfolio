@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACO Population Health Management — Sangeeta Parakala</title>
+  <meta name="description" content="Case study: ACO Population Health Management at UnitedHealth Group — designing enterprise clinical services and care management platforms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .cs-hero {
+      background: #F4F4F4;
+      padding: clamp(3rem, 8vh, 6rem) 0;
+    }
+
+    .cs-hero__label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+
+    .cs-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      color: var(--ink);
+      max-width: 24ch;
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-hero__quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.375rem);
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--ink-muted);
+      max-width: 62ch;
+      border-left: 3px solid var(--accent);
+      padding-left: var(--space-3);
+      margin: 0;
+    }
+
+    .cs-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    @media (min-width: 720px) {
+      .cs-meta { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .cs-meta__label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--ink-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .cs-meta__value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .cs-section {
+      padding: var(--space-7) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cs-section:last-of-type { border-bottom: none; }
+
+    .cs-section__label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-section__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: var(--space-4);
+      max-width: 28ch;
+    }
+
+    .cs-body {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--ink-muted);
+      max-width: 64ch;
+    }
+
+    .cs-body p { margin-bottom: var(--space-3); }
+    .cs-body p:last-child { margin-bottom: 0; }
+
+    .cs-two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    @media (min-width: 860px) {
+      .cs-two-col { grid-template-columns: 1fr 1fr; }
+      .cs-two-col--wide { grid-template-columns: 3fr 2fr; }
+    }
+
+    .cs-image {
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-top: var(--space-5);
+    }
+
+    .cs-image img { width: 100%; height: auto; display: block; }
+    .cs-image--full { margin-top: var(--space-5); }
+
+    .cs-image__caption {
+      font-size: 0.8125rem;
+      color: var(--ink-muted);
+      margin-top: var(--space-2);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .cs-insights {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .cs-insight { display: flex; gap: var(--space-3); align-items: flex-start; }
+
+    .cs-insight__dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 0.5rem;
+    }
+
+    .cs-insight__text { font-size: 1rem; color: var(--ink-muted); line-height: 1.65; }
+
+    .cs-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      margin-bottom: var(--space-4);
+      transition: color 0.2s;
+    }
+
+    .cs-back:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="nav__brand">sangeeta parakala<span class="nav__brand-dot">.</span></a>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">☰</button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="work.html" class="is-active">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="container">
+        <div class="reveal">
+          <span class="cs-hero__label">Case Study · UnitedHealth Group · 2016 — 2021</span>
+          <h1 class="cs-hero__title">ACO Population Health Management</h1>
+          <p class="cs-hero__quote">Designing enterprise clinical services platforms that connect care management teams with the data, workflows, and insights they need to improve outcomes at scale.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meta -->
+    <section style="padding: 0; border-bottom: none;">
+      <div class="container">
+        <div class="cs-meta reveal">
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Role</div>
+            <div class="cs-meta__value">Lead Product Designer</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Company</div>
+            <div class="cs-meta__value">UnitedHealth Group</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Platform</div>
+            <div class="cs-meta__value">ACO Care Management</div>
+          </div>
+          <div class="cs-meta__item">
+            <div class="cs-meta__label">Timeline</div>
+            <div class="cs-meta__value">2016 — 2021</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="cs-two-col">
+          <div class="reveal">
+            <div class="cs-section__label">Platform</div>
+            <h2 class="cs-section__title">Connecting care teams with the data that drives outcomes.</h2>
+          </div>
+          <div class="cs-body reveal">
+            <p>Care management teams wanted a high-level view of how they were performing and what metrics they would be measured on. We pulled data from the National Patient Care Opportunity Report to find measurement metrics, used the financial report to compute targets, and pulled actuals from the monthly health system summary report.</p>
+            <p>For measures with defined goals, we surfaced those goals on each card — so users could immediately see where their organization stood relative to regional benchmarks.</p>
+          </div>
+        </div>
+
+        <div class="reveal" style="margin-top: var(--space-6); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+          <div style="background: #fff; border-radius: var(--radius-md); box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; padding: var(--space-3);">
+            <img src="images/ACO/Cloud+Landscape.jpg" alt="ACO ACTIVE Platform Dashboard" loading="lazy" style="width: 100%; height: auto; display: block; border-radius: calc(var(--radius-md) - 4px);">
+            <p class="cs-image__caption" style="margin-top: var(--space-2); margin-bottom: 0;">UnitedHealthcare ACTIVE platform — utilization metrics, quality scores, and care opportunity drill-downs.</p>
+          </div>
+          <div style="background: #fff; border-radius: var(--radius-md); box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; padding: var(--space-3);">
+            <img src="images/ACO/Group+14.webp" alt="Job Titles, Personas, Scenarios and Tasks Breakdown" loading="lazy" style="width: 100%; height: auto; display: block; border-radius: calc(var(--radius-md) - 4px);">
+            <p class="cs-image__caption" style="margin-top: var(--space-2); margin-bottom: 0;">Job Titles, Personas, Scenarios and Tasks Breakdown — mapping care management roles and tasks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Einstein quote -->
+    <section style="padding: var(--space-7) 0; border-bottom: 1px solid var(--line);">
+      <div class="container">
+        <blockquote class="reveal" style="border-left: 3px solid var(--accent); padding-left: var(--space-4); max-width: 54ch; margin: 0 auto;">
+          <p style="font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 500; line-height: 1.5; color: var(--ink); font-style: italic; margin: 0 0 var(--space-2) 0;">"If I had one hour to save the world, I would spend fifty-five minutes defining the problem and only five minutes finding the solution."</p>
+          <footer style="font-size: 0.875rem; font-weight: 500; color: var(--ink-muted); letter-spacing: 0.05em;">— Albert Einstein</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="cs-section" style="background: #F4F4F4;">
+      <div class="container">
+        <div class="cs-two-col">
+          <div class="reveal">
+            <div class="cs-section__label">Research</div>
+            <h2 class="cs-section__title">Understanding the people behind the data.</h2>
+          </div>
+          <div class="cs-body reveal">
+            <p>The ACO platform served a range of clinical and administrative roles — from Practice Managers overseeing day-to-day operations to Directors of Quality focused on outcomes and compliance. Understanding how each role engaged with performance data was critical to designing a system that felt relevant and actionable at every level.</p>
+          </div>
+        </div>
+
+        <div class="reveal" style="margin-top: var(--space-7); max-width: 860px; margin-left: auto; margin-right: auto;">
+          <img src="images/ACO/Personas2.webp" alt="ACO Personas" loading="lazy" style="width: 100%; height: auto; display: block; border-radius: var(--radius-md);">
+          <p class="cs-image__caption">Core personas — Practice Manager, Care Manager, and Director of Quality.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back link -->
+    <div class="container" style="padding-top: var(--space-6); padding-bottom: var(--space-6);">
+      <a href="work.html" class="cs-back reveal">← Back to all work</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-copy">&copy; <span class="year"></span> Sangeeta Parakala</div>
+        <div class="footer-links">
+          <a href="mailto:sparakala@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/sangeetaparakala" target="_blank">LinkedIn</a>
+          <a href="tel:+19192790078">919.279.0078</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
