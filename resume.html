@@ -114,20 +114,39 @@
       color: var(--ink-muted);
     }
 
+    .resume-tagline {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-top: var(--space-3);
+    }
+
+    .resume-companies {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: 0.5rem;
+    }
+
     /* Skills */
     .resume-skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--ink-muted);
     }
 
     .resume-skill {
-      font-size: 0.8125rem;
-      font-weight: 500;
-      background: #F4F4F4;
-      color: var(--ink);
-      border-radius: 999px;
-      padding: 0.3rem 0.75rem;
+      display: inline;
+    }
+
+    .resume-skill + .resume-skill::before {
+      content: " · ";
+      color: var(--ink-soft);
+      margin: 0 0.15rem;
     }
 
     .resume-skill-group {
@@ -262,23 +281,28 @@
       <div class="resume-header">
         <div>
           <div class="resume-header__name">Sangeeta Parakala</div>
-          <div class="resume-header__title">Product Design Leader | 0→1 Builder of AI &amp; Clinical Platforms</div>
+          <div class="resume-header__title">Product Design Leader | AI &amp; Complex Systems</div>
+          <div class="resume-header__tagline">AI Workflows · Service Design · Information Architecture · Scalable Platforms</div>
         </div>
         <div class="resume-header__contact">
-          <a href="tel:+19192790078">919.279.0078</a>
+          <a href="tel:+19192790078">M: 919.279.0078</a>
           <a href="mailto:sparakala@gmail.com">sparakala@gmail.com</a>
           <a href="https://www.sparakala.com" target="_blank">sparakala.com</a>
           <a href="https://www.linkedin.com/in/sangeetaparakala" target="_blank">LinkedIn</a>
-          <button class="resume-print" onclick="window.print()">⎙ Print / Save PDF</button>
+          <a class="resume-print" href="SP_Resume.pdf" download>↓ Download Resume</a>
         </div>
       </div>
 
       <!-- Body grid -->
       <div class="resume-body">
 
-        <!-- Summary -->
-        <div class="resume-section-label">Summary</div>
-        <p class="resume-summary">Product Design Leader with 10+ years building and scaling complex, data-rich platforms across healthcare and enterprise. Proven track record of leading 0→1 product design, establishing design systems, and driving clarity in ambiguous environments. Specialize in transforming clinical and operational workflows into intuitive, high-quality experiences across web, mobile, and internal tools balancing user needs, regulatory constraints, and business outcomes. Experienced in managing and mentoring design teams, partnering with product and engineering leadership, and raising the bar for design craft and execution. Expertise across product design, UX/UI, mobile and web applications, internal tools, and clinical systems in regulated environments.</p>
+        <!-- Professional Summary -->
+        <div class="resume-section-label">Professional Summary</div>
+        <div>
+          <p class="resume-summary">Design and systems leader with 10+ years of experience building scalable platforms, onboarding systems, and AI-assisted workflows across complex multi-user enterprise environments. Specialize in transforming dense technical workflows, interconnected data systems, and operational complexity into intuitive experiences that improve onboarding, usability, and time-to-value across diverse user personas. Experienced partnering closely with engineering teams to define information architecture, interaction patterns, prototyping frameworks, and interoperable workflows, including structured FHIR-based systems and large-scale onboarding experiences. Known for combining systems thinking, technical collaboration, and human-centered design to create scalable experiences for both users and emerging AI-driven workflows.</p>
+          <p class="resume-tagline">Building systems for operational efficiency and enterprise decision-making at scale.</p>
+          <p class="resume-companies">Slope &middot; Omnicell &middot; Optum &middot; Lenovo &middot; IBM</p>
+        </div>
 
         <hr class="resume-row__divider">
 
@@ -286,47 +310,63 @@
         <div class="resume-section-label">Skills</div>
         <div>
           <div class="resume-skill-group">
-            <div class="resume-skill-group__label">Product Design &amp; Strategy</div>
+            <div class="resume-skill-group__label">Product &amp; Service Design</div>
             <div class="resume-skills">
-              <span class="resume-skill">Product Design</span>
-              <span class="resume-skill">UX Design</span>
-              <span class="resume-skill">UI Design</span>
-              <span class="resume-skill">Design Systems</span>
-              <span class="resume-skill">0→1 Product Development</span>
+              <span class="resume-skill">Developer Experience (FHIR)</span>
               <span class="resume-skill">Information Architecture</span>
+              <span class="resume-skill">UX Strategy</span>
+              <span class="resume-skill">Workflow Design</span>
+              <span class="resume-skill">Design Systems</span>
               <span class="resume-skill">Service Design</span>
+              <span class="resume-skill">AI-Assisted Workflows</span>
+              <span class="resume-skill">Conversational Interfaces</span>
+              <span class="resume-skill">0→1 Product Development</span>
+            </div>
+          </div>
+          <div class="resume-skill-group">
+            <div class="resume-skill-group__label">AI &amp; Interaction Design</div>
+            <div class="resume-skills">
+              <span class="resume-skill">AI Experience Design</span>
+              <span class="resume-skill">Explainable AI (XAI)</span>
+              <span class="resume-skill">Human-in-the-Loop Systems</span>
+              <span class="resume-skill">Decision Intelligence</span>
+              <span class="resume-skill">AI Strategy</span>
             </div>
           </div>
           <div class="resume-skill-group">
             <div class="resume-skill-group__label">User Experience</div>
             <div class="resume-skills">
+              <span class="resume-skill">Human-Centered Design</span>
               <span class="resume-skill">UX Research</span>
+              <span class="resume-skill">Accessibility &amp; Inclusive Design</span>
               <span class="resume-skill">Usability Testing</span>
-              <span class="resume-skill">Interaction Design</span>
-              <span class="resume-skill">Journey Mapping</span>
-              <span class="resume-skill">Dashboard Design</span>
               <span class="resume-skill">Data Visualization</span>
             </div>
           </div>
           <div class="resume-skill-group">
-            <div class="resume-skill-group__label">Platforms</div>
+            <div class="resume-skill-group__label">Platforms &amp; Tools</div>
             <div class="resume-skills">
-              <span class="resume-skill">Web Applications</span>
-              <span class="resume-skill">Mobile Applications</span>
+              <span class="resume-skill">Web Platforms</span>
+              <span class="resume-skill">Enterprise SaaS</span>
               <span class="resume-skill">Internal Tools</span>
-              <span class="resume-skill">Clinical &amp; Healthcare Systems</span>
+              <span class="resume-skill">AI-Assisted Prototyping</span>
+              <span class="resume-skill">HTML</span>
+              <span class="resume-skill">React Prototyping</span>
+              <span class="resume-skill">Figma</span>
+              <span class="resume-skill">Axure</span>
+              <span class="resume-skill">Miro</span>
+              <span class="resume-skill">Conversational Systems</span>
             </div>
           </div>
           <div class="resume-skill-group">
-            <div class="resume-skill-group__label">Tools</div>
+            <div class="resume-skill-group__label">Human Factors &amp; Systems</div>
             <div class="resume-skills">
-              <span class="resume-skill">Figma</span>
-              <span class="resume-skill">Axure</span>
-              <span class="resume-skill">Sketch</span>
-              <span class="resume-skill">Miro</span>
-              <span class="resume-skill">Prototyping</span>
-              <span class="resume-skill">Wireframing</span>
-              <span class="resume-skill">HTML</span>
+              <span class="resume-skill">Human Factors</span>
+              <span class="resume-skill">Cognitive Load Reduction</span>
+              <span class="resume-skill">Safety-Critical Workflows</span>
+              <span class="resume-skill">Cross-Platform Systems</span>
+              <span class="resume-skill">Decision Support</span>
+              <span class="resume-skill">Multimodal Experiences</span>
             </div>
           </div>
         </div>
@@ -336,11 +376,23 @@
         <!-- Design Leadership -->
         <div class="resume-section-label">Design Leadership</div>
         <ul class="resume-job__bullets">
-          <li>Built and mentored design teams, scaling from solo to multi-designer orgs</li>
-          <li>Defined design standards and workflows across 20+ product teams</li>
-          <li>Operate as a player-coach, balancing hands-on design with strategic leadership</li>
-          <li>Partner closely with product and engineering to drive alignment in ambiguous environments</li>
-          <li>Known for bringing clarity to complex systems and raising design quality across teams</li>
+          <li>Partnered across product, tech, and business to unblock complex challenges and accelerate decision-making</li>
+          <li>Applied human-centered design methods to navigate competing priorities and deliver scalable solutions</li>
+          <li>Led discovery-driven design initiatives through user research, workflow analysis, rapid prototyping, and iterative testing in ambiguous, high-stakes problem spaces</li>
+          <li>Used customer insights and usability feedback to identify friction and improve experience quality across complex systems</li>
+        </ul>
+
+        <hr class="resume-row__divider">
+
+        <!-- AI & Workflow Experience -->
+        <div class="resume-section-label">AI &amp; Workflow Experience</div>
+        <ul class="resume-job__bullets">
+          <li>Designed AI-assisted workflows that balance automation with human oversight, clarity, and trust</li>
+          <li>Built conversational and assistant-driven interaction patterns for navigating complex operational systems</li>
+          <li>Developed scalable information architectures and workflow structures to reduce onboarding friction and cognitive load</li>
+          <li>Partnered closely with engineering teams to rapidly prototype and validate technical workflows using HTML and React-based prototypes</li>
+          <li>Used AI-assisted tooling and rapid iteration workflows to accelerate product exploration and implementation alignment</li>
+          <li>Focused on creating systems that support both human usability and structured machine interaction</li>
         </ul>
 
         <hr class="resume-row__divider">
@@ -356,100 +408,6 @@
             <div class="resume-edu__degree">UX Design Principles for AR/VR</div>
             <div class="resume-edu__school">Tandon School of Engineering, NYU</div>
           </div>
-        </div>
-
-        <hr class="resume-row__divider">
-
-        <!-- Experience -->
-        <div class="resume-section-label">Experience</div>
-        <div class="resume-jobs">
-
-          <div class="resume-job">
-            <div class="resume-job__header">
-              <span class="resume-job__company">Slope.IO</span>
-              <span class="resume-job__dates">Aug 2024 — Present</span>
-            </div>
-            <div class="resume-job__title">Lead &amp; Sole Designer</div>
-            <ul class="resume-job__bullets">
-              <li>Led 0→1 design of an AI-powered biospecimen management platform (Biospecimen 360), defining product vision, workflows, and system architecture</li>
-              <li>Drove adoption across 200+ sites, contributing to $10+M in enterprise contracts secured</li>
-              <li>Built and operationalized a cross-platform design system (web, mobile, AI interfaces), establishing consistency across product surfaces</li>
-              <li>Designed clinical and operational workflows for regulated environments, ensuring auditability and compliance at scale. Defined internal tools and clinical dashboards for biospecimen workflows</li>
-              <li>Partnered with product and engineering leadership to translate ambiguity into structured, shippable solutions</li>
-              <li>Established UX patterns for AI-assisted protocol management and prompt-based interactions</li>
-            </ul>
-          </div>
-
-          <div class="resume-job">
-            <div class="resume-job__header">
-              <span class="resume-job__company">The UX Consultant</span>
-              <span class="resume-job__dates">Dec 2023 — Aug 2024</span>
-            </div>
-            <div class="resume-job__title">Experience Strategist</div>
-            <ul class="resume-job__bullets">
-              <li>Led information architecture, design system alignment, and service design for Hexagon's global corporate platform</li>
-              <li>Conducted research and defined experience strategy for US Chess Federation, improving public and member-facing systems</li>
-            </ul>
-          </div>
-
-          <div class="resume-job">
-            <div class="resume-job__header">
-              <span class="resume-job__company">Omnicell</span>
-              <span class="resume-job__dates">July 2021 — Nov 2023</span>
-            </div>
-            <div class="resume-job__title">Sr. Designer &amp; Manager, Design Team</div>
-            <ul class="resume-job__bullets">
-              <li>Built and scaled a design team from 1→5, supporting 22+ cross-functional scrum teams</li>
-              <li>Led design strategy for a $1.3B cloud-based SaaS platform used by 3,000+ hospitals and 2M+ users</li>
-              <li>Transformed pharmacy workflows, reducing task time by 7+ minutes per pharmacist per item, improving operational efficiency at scale</li>
-              <li>Designed and optimized internal clinical dashboards and tools for high-pressure healthcare environments</li>
-              <li>Established cross-platform design systems and interaction standards across cloud applications and physical cabinet interfaces</li>
-              <li>Partnered with product, engineering, and clinical stakeholders to align design with regulatory and operational constraints</li>
-            </ul>
-          </div>
-
-          <div class="resume-job">
-            <div class="resume-job__header">
-              <span class="resume-job__company">UnitedHealth Group (Optum)</span>
-              <span class="resume-job__dates">Aug 2016 — July 2021</span>
-            </div>
-            <div class="resume-job__title">Lead Product Designer</div>
-            <ul class="resume-job__bullets">
-              <li>Defined design strategy for enterprise clinical services platforms, including decision-at-point-of-care and payment systems</li>
-              <li>Designed patient-facing applications and internal clinical systems</li>
-              <li>Built frameworks for AI-driven clinical decision support systems</li>
-              <li>Designed web and mobile patient experiences, including eVisit and international healthcare platforms</li>
-              <li>Created conversational UX and prompt-based journeys for enterprise chatbot systems</li>
-              <li>Led user research and synthesis, influencing product direction and improving user outcomes</li>
-            </ul>
-          </div>
-
-          <div class="resume-job">
-            <div class="resume-job__header">
-              <span class="resume-job__company">Lenovo</span>
-              <span class="resume-job__dates">Oct 2014 — Aug 2016</span>
-            </div>
-            <div class="resume-job__title">CX Analyst / UE Engineer</div>
-            <ul class="resume-job__bullets">
-              <li>Led UX for Out-of-Box Experience (OOBE) across ThinkSystem products</li>
-              <li>Partnered with Google to define UX standards for Chrome systems</li>
-              <li>Conducted usability research and translated insights into product improvements</li>
-              <li>Analyzed consumer behavior, market trends, and user demographics to build an efficient initial onboarding process, taking into account social, cultural and cognitive human factors impacting the experience for a global audience</li>
-            </ul>
-          </div>
-
-          <div class="resume-job">
-            <div class="resume-job__header">
-              <span class="resume-job__company">IBM</span>
-              <span class="resume-job__dates">May 2009 — May 2014</span>
-            </div>
-            <div class="resume-job__title">Solution Designer / Usability Analyst</div>
-            <ul class="resume-job__bullets">
-              <li>Designed B2B enterprise tools, automating workflows and improving operational efficiency</li>
-              <li>Defined ROI metrics and usability frameworks for enterprise systems</li>
-            </ul>
-          </div>
-
         </div>
 
       </div>

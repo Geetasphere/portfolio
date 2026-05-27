@@ -245,6 +245,34 @@ section {
   margin-bottom: var(--space-4);
 }
 
+.hero__tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink);
+  max-width: none;
+  white-space: nowrap;
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+@media (max-width: 760px) {
+  .hero__tagline {
+    white-space: normal;
+  }
+}
+
+.hero__companies {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: var(--space-4);
+}
+
 .hero__scroll {
   display: inline-flex;
   align-items: center;
@@ -274,6 +302,142 @@ section {
 .section-title {
   margin-bottom: var(--space-4);
   max-width: 22ch;
+}
+
+/* --- Featured Work (homepage card grid) --- */
+#featured-work {
+  padding: var(--space-6) 0;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+@media (min-width: 900px) {
+  .featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md, 12px);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  border-color: transparent;
+}
+
+.featured-card:hover .featured-card__cta {
+  color: var(--accent);
+}
+
+.featured-card__thumb {
+  aspect-ratio: 16 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.featured-card__thumb img {
+  max-width: 38%;
+  max-height: 45%;
+  object-fit: contain;
+}
+
+.featured-card__thumb--slope    { background: #1a1a2e; }
+.featured-card__thumb--omnicell { background: #ffffff; }
+.featured-card__thumb--optum    { background: #ffffff; }
+
+.featured-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-4);
+  gap: var(--space-2);
+}
+
+.featured-card__num {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-muted);
+}
+
+.featured-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0;
+}
+
+.featured-card__desc {
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.featured-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: var(--space-1) 0 0;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--line);
+}
+
+.featured-card__meta > div {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.featured-card__meta dt {
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding-top: 0.15rem;
+}
+
+.featured-card__meta dd {
+  color: var(--ink);
+  margin: 0;
+}
+
+.featured-card__cta {
+  margin-top: auto;
+  padding-top: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  transition: color 0.2s ease;
 }
 
 /* --- Work list (company timeline) --- */
@@ -442,7 +606,7 @@ a.work-item__thumb:hover { opacity: 0.85; }
 
 .about-statement {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: -0.025em;
