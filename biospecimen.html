@@ -469,34 +469,33 @@
     <!-- Design Workshop -->
     <section class="cs-section" style="background: #1C1C1C;">
       <div class="container">
-        <div class="cs-two-col">
-          <div class="reveal">
-            <div class="cs-section__label" style="color: rgba(255,255,255,0.4);">Design Workshop</div>
-            <h2 class="cs-section__title" style="color: #fff;">Exploring the problem space with the full team.</h2>
-            <div class="cs-body" style="color: rgba(255,255,255,0.65); margin-top: var(--space-4);">
-              <p>We then conducted a design workshop where we explored the problem space deeply, and defined the problems we wanted to focus on.</p>
-              <p>We then broke the team into groups to brainstorm features within each of these problem spaces and possible solutions.</p>
-              <p>We had the engineering team help us understand technical limitations and sales help us understand all the compliance issues we will need to support.</p>
-            </div>
+        <div class="reveal">
+          <div class="cs-section__label" style="color: rgba(255,255,255,0.4);">Design Workshop</div>
+          <h2 class="cs-section__title" style="color: #fff; max-width: none;">Exploring the problem space together.</h2>
+        </div>
+        <div class="cs-two-col" style="margin-top: var(--space-5);">
+          <div class="cs-body reveal" style="color: rgba(255,255,255,0.65);">
+            <p>While we worked to stabilize the team, we brought in external contractors to facilitate a collaborative workshop with Product and Engineering. The workshop brought the team together to explore the complexities of biospecimen management, identify key challenges, and define the problem areas we wanted to address.</p>
+            <p>We broke into smaller groups to brainstorm potential features and solutions. Engineering helped us understand technical constraints, while Sales contributed insights into customer needs and compliance requirements. This process helped us build a shared understanding of the problem space, align on priorities, and establish a foundation for product direction.</p>
           </div>
-          <div class="cs-photo-grid cs-photo-grid--2 reveal" style="margin-top: 0; align-self: center;">
+          <div class="cs-photo-grid cs-photo-grid--2 reveal" style="margin-top: 0; align-self: start;">
             <div class="cs-photo-grid__item">
-              <img src="images/biospecimen/IMG_9700+%281%29.jpg" alt="Workshop sketches" loading="lazy">
+              <img src="images/biospecimen/IMG_9700.webp" alt="Workshop sketches" loading="lazy">
             </div>
             <div class="cs-photo-grid__item">
-              <img src="images/biospecimen/IMG_9701+%281%29.jpg" alt="Workshop sketches" loading="lazy">
+              <img src="images/biospecimen/IMG_9701.webp" alt="Workshop sketches" loading="lazy">
             </div>
             <div class="cs-photo-grid__item">
-              <img src="images/biospecimen/IMG_9702+%282%29.jpg" alt="Workshop sketches" loading="lazy">
+              <img src="images/biospecimen/IMG_9702.webp" alt="Workshop sketches" loading="lazy">
             </div>
             <div class="cs-photo-grid__item">
-              <img src="images/biospecimen/IMG_9704+%282%29.jpg" alt="Workshop sketches" loading="lazy">
+              <img src="images/biospecimen/IMG_9704.webp" alt="Workshop sketches" loading="lazy">
             </div>
           </div>
         </div>
 
         <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-6);">
-          <img src="images/biospecimen/IMG_9705+%282%29.jpg" alt="Versatile intuitive sample flows" loading="lazy" style="border-radius: var(--radius-md);">
+          <img src="images/biospecimen/IMG_9705.webp" alt="Versatile intuitive sample flows" loading="lazy" style="border-radius: var(--radius-md);">
           <p class="cs-image__caption" style="color: rgba(255,255,255,0.45);">Exploring versatile, intuitive sample and subject interlaced timepoint flows.</p>
         </div>
       </div>
@@ -505,30 +504,167 @@
     <!-- The Invisible Work -->
     <section class="cs-section">
       <div class="container">
-        <div class="cs-two-col">
-          <div class="reveal">
-            <div class="cs-section__label">The Invisible Work</div>
-            <h2 class="cs-section__title">Building alignment before building the product.</h2>
-          </div>
-          <div class="cs-body reveal">
-            <p>Equipped with research and clarity, I started with building a slope value model for the teams to align on. Once we were in alignment on the platform we were building and the archetypes we were building for, we cleaned up the personas.</p>
+        <div class="reveal">
+          <div class="cs-section__label">The Invisible Work</div>
+          <h2 class="cs-section__title" style="white-space: nowrap;">Building alignment before building the product.</h2>
+          <div class="cs-body" style="margin-top: var(--space-3); max-width: none;">
+            <p>I started by building a domain model to map the end-to-end biospecimen lifecycle, connecting workflows, systems, and the people involved. This helped us establish a shared understanding of the ecosystem, identify gaps and dependencies, and plan the integrations needed to support a connected experience.</p>
           </div>
         </div>
 
-        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-7);">
-          <img src="images/biospecimen/Slide+16_9+-+1.jpg" alt="Platform model — inventory tracking, visit schedule, sample management" loading="lazy">
-          <p class="cs-image__caption">Platform model — mapping the full biospecimen lifecycle across inventory tracking, visit scheduling, sample management, shipping, and storage.</p>
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-4);">
+          <div style="position: relative; border-radius: 20px; overflow: hidden; border: 1.5px solid #e0e0e0;">
+            <img src="images/biospecimen/domain_model.svg" alt="Domain model" style="width: 100%; display: block; pointer-events: none;">
+            <div id="whiteWash" style="position: absolute; inset: 0; background: rgba(255,255,255,0.8); opacity: 0; transition: opacity 0.5s ease; pointer-events: none;"></div>
+            <img id="connectionsOverlay" src="images/biospecimen/Connections.svg" alt="Entity connections overlay" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; opacity: 0; transition: opacity 0.5s ease; pointer-events: none;">
+            <img id="uncOverlay" src="images/biospecimen/uncertainty overlay.svg" alt="Uncertainty overlay" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; opacity: 0; transition: opacity 0.5s ease; pointer-events: none;">
+            <!-- Interactive hotspot: full-cover click area + visual badges + tooltip -->
+            <div id="uncHotspots" onclick="handleUncClick(event)" style="display:none;position:absolute;inset:0;cursor:pointer;z-index:20;">
+              <div id="uncBadge1" style="pointer-events:none;position:absolute;left:75%;top:35.0%;transform:translate(-50%,-50%);width:1.5rem;height:1.5rem;border-radius:50%;background:var(--accent);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:#fff;font-family:inherit;">1</div>
+              <div id="uncBadge2" style="pointer-events:none;position:absolute;left:69.3%;top:41.3%;transform:translate(-50%,-50%);width:1.5rem;height:1.5rem;border-radius:50%;background:#fff;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--accent);font-family:inherit;">2</div>
+              <div id="uncBadge3" style="pointer-events:none;position:absolute;left:50.0%;top:80.7%;transform:translate(-50%,-50%);width:1.5rem;height:1.5rem;border-radius:50%;background:#fff;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--accent);font-family:inherit;">3</div>
+              <div id="uncBadge4" style="pointer-events:none;position:absolute;left:49.6%;top:61.1%;transform:translate(-50%,-50%);width:1.5rem;height:1.5rem;border-radius:50%;background:#fff;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--accent);font-family:inherit;">4</div>
+              <div id="uncBadge5" style="pointer-events:none;position:absolute;left:30.6%;top:61.1%;transform:translate(-50%,-50%);width:1.5rem;height:1.5rem;border-radius:50%;background:#fff;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--accent);font-family:inherit;">5</div>
+              <div id="uncBadge6" style="pointer-events:none;position:absolute;left:37.3%;top:36.8%;transform:translate(-50%,-50%);width:1.5rem;height:1.5rem;border-radius:50%;background:#fff;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--accent);font-family:inherit;">6</div>
+            </div>
+            <!-- Tooltip panel -->
+            <div id="uncTooltip" style="display:none;position:absolute;right:1%;top:3%;background:#fff;border:1.5px solid #e0e0e0;border-radius:16px;padding:0.75rem 1rem;width:23%;box-shadow:0 4px 16px rgba(0,0,0,0.08);pointer-events:none;z-index:30;">
+              <p style="font-size:0.55rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin:0 0 0.35rem;">Where uncertainty enters</p>
+              <strong style="font-size:0.75rem;color:var(--ink);display:block;margin-bottom:0.2rem;" id="uncTitle">Shipped → Received?</strong>
+              <p style="font-size:0.65rem;color:var(--ink-muted);margin:0 0 0.5rem;line-height:1.5;" id="uncDesc">No receipt confirmation from the destination lab. Origin of uncertainty; needs partner integration.</p>
+              <p style="font-size:0.55rem;color:var(--ink-muted);margin:0;opacity:0.6;">Click a number to view its detail</p>
+            </div>
+          </div>
+          <p class="cs-image__caption" id="modelCaption">Domain model — mapping the full biospecimen lifecycle across inventory tracking, visit scheduling, sample management, shipping, and storage.</p>
         </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); margin-top: 0.25rem;" class="reveal">
+          <button id="card01" onclick="setModelView(1)" style="text-align: left; background: #fff; border: 1.5px solid var(--accent); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); cursor: pointer; font-family: inherit; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; transition: border-color 0.2s, background 0.2s;">
+            <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; color: var(--accent);">01</span>
+            <span style="color: #ccc;">|</span>
+            <strong style="font-size: 0.875rem; color: var(--ink);">Domain model</strong>
+            <span style="color: #ccc;">|</span>
+            <span style="font-size: 0.875rem; color: var(--ink-muted);">Full lifecycle</span>
+          </button>
+          <button id="card02" onclick="setModelView(2)" style="text-align: left; background: #fff; border: 1.5px solid #e0e0e0; border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); cursor: pointer; font-family: inherit; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; transition: border-color 0.2s, background 0.2s;">
+            <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; color: var(--accent);">02</span>
+            <span style="color: #ccc;">|</span>
+            <strong style="font-size: 0.875rem; color: var(--ink);">Connections</strong>
+            <span style="color: #ccc;">|</span>
+            <span style="font-size: 0.875rem; color: var(--ink-muted);">How entities relate</span>
+          </button>
+          <button id="card03" onclick="setModelView(3)" style="text-align: left; background: #fff; border: 1.5px solid #e0e0e0; border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); cursor: pointer; font-family: inherit; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; transition: border-color 0.2s, background 0.2s;">
+            <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; color: var(--accent);">03</span>
+            <span style="color: #ccc;">|</span>
+            <strong style="font-size: 0.875rem; color: var(--ink);">Uncertainty</strong>
+            <span style="color: #ccc;">|</span>
+            <span style="font-size: 0.875rem; color: var(--ink-muted);">Where gaps propagate</span>
+          </button>
+        </div>
+
+        <script>
+          var modelCaptions = [
+            'Domain model — mapping the full biospecimen lifecycle across inventory tracking, visit scheduling, sample management, shipping, and storage.',
+            'Connections — parent-child hierarchies and relationships across subjects, visits, samples, aliquots, shipments, and storage locations.',
+            'Uncertainty — where information gaps, implied entities, and unresolved dependencies enter the system and propagate across workflows.'
+          ];
+
+          function setModelView(n) {
+            var connectionsOverlay = document.getElementById('connectionsOverlay');
+            var uncOverlay = document.getElementById('uncOverlay');
+            var whiteWash = document.getElementById('whiteWash');
+            var caption = document.getElementById('modelCaption');
+            var cards = [
+              document.getElementById('card01'),
+              document.getElementById('card02'),
+              document.getElementById('card03')
+            ];
+
+            whiteWash.style.opacity = n >= 2 ? '1' : '0';
+            connectionsOverlay.style.opacity = n >= 2 ? '1' : '0';
+            uncOverlay.style.opacity = n === 3 ? '1' : '0';
+            caption.textContent = modelCaptions[n - 1];
+
+            document.getElementById('uncHotspots').style.display = n === 3 ? 'block' : 'none';
+            document.getElementById('uncTooltip').style.display = n === 3 ? 'block' : 'none';
+            if (n === 3) setUncZone(1);
+
+            cards.forEach(function(card, i) {
+              var active = i === n - 1;
+              card.style.borderColor = active ? 'var(--accent)' : '#e0e0e0';
+              card.style.background = active ? '#fff' : '#fff';
+            });
+          }
+
+          var uncZones = [
+            { title: 'Shipped → Received?', desc: 'No receipt confirmation from the destination lab. Origin of uncertainty; needs partner integration.' },
+            { title: 'Shipment contents', desc: 'Which aliquots went in which shipment is captured at packing, not verified on arrival.' },
+            { title: 'Aliquot state', desc: 'Each child aliquot can be in a different state across labs.' },
+            { title: 'Parent sample status', desc: 'Rolls up from N aliquots, so one unknown aliquot makes the parent unknown.' },
+            { title: 'Visit completeness', desc: "A visit can't be confirmed complete while its samples are unconfirmed." },
+            { title: 'Expected samples', desc: 'Protocol timepoints are implied, so "Expected" counts are inferred.' }
+          ];
+
+          function setUncZone(n) {
+            var zone = uncZones[n - 1];
+            document.getElementById('uncTitle').textContent = zone.title;
+            document.getElementById('uncDesc').textContent = zone.desc;
+            for (var i = 1; i <= 6; i++) {
+              var badge = document.getElementById('uncBadge' + i);
+              if (!badge) continue;
+              if (i === n) {
+                badge.style.background = 'var(--accent)';
+                badge.style.color = '#fff';
+              } else {
+                badge.style.background = '#fff';
+                badge.style.color = 'var(--accent)';
+              }
+            }
+          }
+
+          var uncZonePositions = [
+            { n: 1, x: 75.0, y: 35.0 },
+            { n: 2, x: 69.3, y: 41.3 },
+            { n: 3, x: 50.0, y: 80.7 },
+            { n: 4, x: 49.6, y: 61.1 },
+            { n: 5, x: 30.6, y: 61.1 },
+            { n: 6, x: 37.3, y: 36.8 }
+          ];
+
+          function handleUncClick(event) {
+            var rect = event.currentTarget.getBoundingClientRect();
+            var xPct = (event.clientX - rect.left) / rect.width * 100;
+            var yPct = (event.clientY - rect.top) / rect.height * 100;
+            var hitRadius = 4;
+            for (var i = 0; i < uncZonePositions.length; i++) {
+              var z = uncZonePositions[i];
+              var dx = xPct - z.x, dy = yPct - z.y;
+              if (Math.sqrt(dx * dx + dy * dy) < hitRadius) {
+                setUncZone(z.n);
+                return;
+              }
+            }
+          }
+        </script>
 
         <div class="cs-two-col" style="margin-top: var(--space-7);">
           <div class="cs-image reveal" style="margin-top: 0;">
-            <img src="images/biospecimen/Slide+16_9+-+2.jpg" alt="Sponsor and CRO Coordinator archetypes" loading="lazy">
+            <img src="images/biospecimen/Slide+16_9+-+2.jpg" alt="Sponsor and CRO Coordinator archetypes" loading="lazy" style="border-radius: 12px; border: 1.5px solid #e0e0e0;">
             <p class="cs-image__caption">Sponsor and CRO Coordinator archetypes — defining oversight and operational roles.</p>
           </div>
           <div class="cs-image reveal" style="margin-top: 0;">
-            <img src="images/biospecimen/Slide+16_9+-+4.jpg" alt="Lab Tech archetype" loading="lazy">
+            <img src="images/biospecimen/Slide+16_9+-+4.jpg" alt="Lab Tech archetype" loading="lazy" style="border-radius: 12px; border: 1.5px solid #e0e0e0;">
             <p class="cs-image__caption">Lab Technician archetype — grounding collection and processing workflows in real user needs.</p>
           </div>
+        </div>
+
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-5);">
+          <img src="images/biospecimen/Journey · Lab Tech (Alex) · sample collection.jpg" alt="Lab Tech Alex journey — sample collection" loading="lazy" style="border-radius: 12px; border: 1.5px solid #e0e0e0;">
+          <p class="cs-image__caption">Lab Tech journey — sample collection workflow.</p>
+        </div>
+        <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-4);">
+          <img src="images/biospecimen/Journey · Lab Tech (Alex) · prep kits.jpg" alt="Lab Tech Alex journey — prep kits" loading="lazy" style="border-radius: 12px; border: 1.5px solid #e0e0e0;">
+          <p class="cs-image__caption">Lab Tech journey — prep kits workflow.</p>
         </div>
       </div>
     </section>
@@ -539,10 +675,11 @@
         <div class="cs-two-col">
           <div class="reveal">
             <div class="cs-section__label">Final Designs</div>
-            <h2 class="cs-section__title">From archetypes to shipped product.</h2>
+            <h2 class="cs-section__title">From journeys to shipped product.</h2>
           </div>
           <div class="cs-body reveal">
-            <p>I established the product vision, which was translated into features, user stories, and sprint-level designs in partnership with product management. Biospecimen 360 has received positive validation in testing, with adoption across <strong style="color: var(--ink);">200+ clinical sites</strong> and <strong style="color: var(--ink);">$10M+ in contracts secured</strong> with large pharmaceutical companies.</p>
+            <p>I established the product vision and translated it into features, user stories, and sprint-level designs in partnership with product management. I built a reusable, code-based React component library alongside the Figma design system, and used TypeScript and React to create functional prototypes for testing interactions through clickable experiences.</p>
+            <p style="margin-top: var(--space-3);">Biospecimen 360 received positive validation through user testing, with adoption across multiple sites and the inventory management across <strong style="color: var(--ink);">200+ clinical sites</strong> with <strong style="color: var(--ink);">$10M+ in contracts secured</strong>.</p>
           </div>
         </div>
 
