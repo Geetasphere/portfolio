@@ -275,6 +275,59 @@
     }
 
     .pw-gate.is-hidden { display: none; }
+
+    /* Interactive model button row */
+    .model-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-2);
+      margin-top: 0.25rem;
+    }
+
+    .model-buttons button {
+      flex-wrap: wrap;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 700px) {
+      .cs-section {
+        padding: var(--space-5) 0;
+      }
+
+      .model-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .cs-photo-grid__item img {
+        height: clamp(140px, 30vw, 220px);
+      }
+
+      #uncTooltip {
+        width: 88% !important;
+        right: 6% !important;
+        top: auto !important;
+        bottom: 3% !important;
+      }
+
+      #uncTooltip p:first-child {
+        font-size: 0.65rem !important;
+      }
+
+      #uncTooltip strong {
+        font-size: 0.875rem !important;
+      }
+
+      #uncTooltip p {
+        font-size: 0.8rem !important;
+      }
+
+      #uncBadge1, #uncBadge2, #uncBadge3,
+      #uncBadge4, #uncBadge5, #uncBadge6 {
+        width: 2rem !important;
+        height: 2rem !important;
+        font-size: 0.7rem !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -427,11 +480,6 @@
         </div>
 
 
-        <div class="cs-image cs-image--full reveal">
-          <img src="images/biospecimen/Group+1.png" alt="Existing Biospecimen 360 product screens" loading="lazy">
-          <p class="cs-image__caption">The existing product — analyzing current workflows to identify structural gaps in the experience.</p>
-        </div>
-
         <div class="cs-image cs-image--full reveal" style="margin-top: var(--space-5);">
           <img src="images/biospecimen/image 64.png" alt="Ethnographic research — shadowing clinicians in their physical workspaces" loading="lazy">
           <p class="cs-image__caption">Photos from my own site visits — shadowing clinicians and lab technicians to observe biospecimen workflows firsthand.</p>
@@ -503,7 +551,7 @@
       <div class="container">
         <div class="reveal">
           <div class="cs-section__label">The Invisible Work</div>
-          <h2 class="cs-section__title" style="white-space: nowrap;">Building alignment before building the product.</h2>
+          <h2 class="cs-section__title">Building alignment before building the product.</h2>
           <div class="cs-body" style="margin-top: var(--space-3); max-width: none;">
             <p>I started by building a domain model to map the end-to-end biospecimen lifecycle, connecting workflows, systems, and the people involved. This helped us establish a shared understanding of the ecosystem, identify gaps and dependencies, and plan the integrations needed to support a connected experience.</p>
           </div>
@@ -536,7 +584,7 @@
           <p class="cs-image__caption" id="modelCaption">Domain model — mapping the full biospecimen lifecycle across inventory tracking, visit scheduling, sample management, shipping, and storage.</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); margin-top: 0.25rem;" class="reveal">
+        <div class="model-buttons reveal">
           <button id="card01" onclick="setModelView(1)" style="text-align: left; background: #fff; border: 1.5px solid var(--accent); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); cursor: pointer; font-family: inherit; display: flex; flex-direction: row; align-items: center; gap: 0.5rem; transition: border-color 0.2s, background 0.2s;">
             <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; color: var(--accent);">01</span>
             <span style="color: #ccc;">|</span>
@@ -685,7 +733,11 @@
       </div>
     </section>
 
-    <div class="container" style="padding-top: var(--space-6); padding-bottom: var(--space-6);">
+    <div class="container" style="padding-top: var(--space-6); padding-bottom: var(--space-2);">
+      <div class="cs-image cs-image--full reveal" style="margin-top: 0; margin-bottom: var(--space-4);">
+        <img src="images/biospecimen/Group+2.jpg" alt="Biospecimen management platform dashboard overview" loading="lazy" style="border-radius: 12px; border: 1.5px solid #e0e0e0;">
+        <p class="cs-image__caption">Biospecimen management platform overview — lifecycle visibility across scheduling, collection, logistics, and storage.</p>
+      </div>
       <a href="work.html" class="cs-back reveal">← Back to all work</a>
     </div>
 
